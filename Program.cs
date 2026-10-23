@@ -75,22 +75,78 @@
 //     }
 // }while (menuChoice != "0");
 
-//Шаг 9. Прямой, обратный счёт и шаг, отличный от 1 
+// //Шаг 9. Прямой, обратный счёт и шаг, отличный от 1 
+// Console.WriteLine();
+// Console.WriteLine("Прямой счёт");
+// for (int i = 1; i <= 5; i++){
+//     Console.WriteLine(i);
+// } 
+// Console.WriteLine();
+// Console.WriteLine("Обратный счёт");
+// for (int i = 5; i >= 1; i--){
+//     Console.WriteLine(i);
+// }
+
+// Console.WriteLine();
+// Console.WriteLine("Чётные числа от 0 до 20");
+// for (int i = 0; i <= 20; i += 2){
+//     Console.WriteLine($"{i} ");
+// }
+// Console.WriteLine();
+
+//Шаг 11. foreach по строке и подсчёт гласных
 Console.WriteLine();
-Console.WriteLine("Прямой счёт");
-for (int i = 1; i <= 5; i++){
-    Console.WriteLine(i);
+Console.WriteLine("foreach по строке");
+
+string word = "Программирование";
+
+foreach (char letter in word){
+    Console.Write($"{letter} ");
 } 
 Console.WriteLine();
-Console.WriteLine("Обратный счёт");
-for (int i = 5; i >= 1; i--){
-    Console.WriteLine(i);
-}
 
 Console.WriteLine();
-Console.WriteLine("Чётные числа от 0 до 20");
-for (int i = 0; i <= 20; i += 2){
-    Console.WriteLine($"{i} ");
-}
-Console.WriteLine();
+Console.WriteLine("Считаем гласные");
 
+string sentense = "Курс алгоритмизации и программирования";
+string vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ";
+int vowelCount = 0;
+
+foreach (char letter in sentense){
+    if (vowels.Contains(letter)){
+        vowelCount++;
+    }
+} 
+Console.WriteLine($"Гласных букв в предложении: {vowelCount}");
+
+//Шаг 12. Вложенные циклы: таблица умножения, треугольник и break во внутреннем цикле 
+Console.WriteLine();
+Console.WriteLine("Таблица умножения 1-9");
+
+for (int row = 1; row <= 9; row++){
+    for (int col = 1; col <= 9; col++){
+        Console.Write($"{row*col, 4}");
+    }
+    Console.WriteLine();
+} 
+Console.WriteLine();
+Console.WriteLine("Треугольник");
+for (int row = 1; row <= 5; row++){
+    for (int col = 1; col <= row; col++){
+        Console.Write("*");
+    }
+    Console.WriteLine();
+} 
+
+Console.WriteLine();
+Console.WriteLine("break прерывает только ВНУТРЕННИЙ цикл");
+
+for (int row = 1; row <= 3; row++){
+    Console.WriteLine($"Внешняя итерация: {row}");
+    for (int col = 1; col <= 5; col++){
+        if (col == 3){
+            break;
+        } 
+        Console.WriteLine($"    Внутренняя итерация: {col}");
+    }
+}
