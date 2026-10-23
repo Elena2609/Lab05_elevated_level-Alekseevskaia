@@ -95,58 +95,124 @@
 // Console.WriteLine();
 
 //Шаг 11. foreach по строке и подсчёт гласных
+// Console.WriteLine();
+// Console.WriteLine("foreach по строке");
+
+// string word = "Программирование";
+
+// foreach (char letter in word){
+//     Console.Write($"{letter} ");
+// } 
+// Console.WriteLine();
+
+// Console.WriteLine();
+// Console.WriteLine("Считаем гласные");
+
+// string sentense = "Курс алгоритмизации и программирования";
+// string vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ";
+// int vowelCount = 0;
+
+// foreach (char letter in sentense){
+//     if (vowels.Contains(letter)){
+//         vowelCount++;
+//     }
+// } 
+// Console.WriteLine($"Гласных букв в предложении: {vowelCount}");
+
+// //Шаг 12. Вложенные циклы: таблица умножения, треугольник и break во внутреннем цикле 
+// Console.WriteLine();
+// Console.WriteLine("Таблица умножения 1-9");
+
+// for (int row = 1; row <= 9; row++){
+//     for (int col = 1; col <= 9; col++){
+//         Console.Write($"{row*col, 4}");
+//     }
+//     Console.WriteLine();
+// } 
+// Console.WriteLine();
+// Console.WriteLine("Треугольник");
+// for (int row = 1; row <= 5; row++){
+//     for (int col = 1; col <= row; col++){
+//         Console.Write("*");
+//     }
+//     Console.WriteLine();
+// } 
+
+// Console.WriteLine();
+// Console.WriteLine("break прерывает только ВНУТРЕННИЙ цикл");
+
+// for (int row = 1; row <= 3; row++){
+//     Console.WriteLine($"Внешняя итерация: {row}");
+//     for (int col = 1; col <= 5; col++){
+//         if (col == 3){
+//             break;
+//         } 
+//         Console.WriteLine($"    Внутренняя итерация: {col}");
+//     }
+// } 
+
+//Шаг 14. Собираем все циклы вместе 
 Console.WriteLine();
-Console.WriteLine("foreach по строке");
+Console.WriteLine("Меню");
 
-string word = "Программирование";
+string menuChoice;
+do {
+    Console.WriteLine("1 - Проанализировать предложение");
+    Console.WriteLine("2 - Найти позицию первой заглавной буквы");
+    Console.WriteLine("0 - Выход");
+    Console.Write("Выберите пункт: ");
+    menuChoice = Console.ReadLine();
 
-foreach (char letter in word){
-    Console.Write($"{letter} ");
-} 
-Console.WriteLine();
-
-Console.WriteLine();
-Console.WriteLine("Считаем гласные");
-
-string sentense = "Курс алгоритмизации и программирования";
-string vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ";
-int vowelCount = 0;
-
-foreach (char letter in sentense){
-    if (vowels.Contains(letter)){
-        vowelCount++;
-    }
-} 
-Console.WriteLine($"Гласных букв в предложении: {vowelCount}");
-
-//Шаг 12. Вложенные циклы: таблица умножения, треугольник и break во внутреннем цикле 
-Console.WriteLine();
-Console.WriteLine("Таблица умножения 1-9");
-
-for (int row = 1; row <= 9; row++){
-    for (int col = 1; col <= 9; col++){
-        Console.Write($"{row*col, 4}");
-    }
-    Console.WriteLine();
-} 
-Console.WriteLine();
-Console.WriteLine("Треугольник");
-for (int row = 1; row <= 5; row++){
-    for (int col = 1; col <= row; col++){
-        Console.Write("*");
-    }
-    Console.WriteLine();
-} 
-
-Console.WriteLine();
-Console.WriteLine("break прерывает только ВНУТРЕННИЙ цикл");
-
-for (int row = 1; row <= 3; row++){
-    Console.WriteLine($"Внешняя итерация: {row}");
-    for (int col = 1; col <= 5; col++){
-        if (col == 3){
+    switch (menuChoice){
+        case "1":
+            Console.Write("Введите предложение: ");
+            string sentence = Console.ReadLine();
+            int vowels = 0;
+            int consonants = 0;
+            int spaces = 0;
+            string vowelsList = "аеёиоуыэюяАЕЁИОУЫЭЮЯ";
+                string consonantsList = "бвгджзйклмнпрстфхцчшщьъБВГДЖЗЙКЛМНПРСТФХЦЧШЩЬЪ";
+            foreach (char letter in sentence){
+                if (letter == ' '){
+                    spaces++;
+                    continue;
+                }
+                if (vowelsList.Contains(letter))
+                    {
+                        vowels++;
+                    } 
+                else if (consonantsList.Contains(letter)){
+                        consonants++;
+                    }
+            }
+            Console.WriteLine($"Всего символов: {sentence.Length}");
+            Console.WriteLine($"Гласных: {vowels}");
+            Console.WriteLine($"Согласных: {consonants}");
+            Console.WriteLine($"Пробелов: {spaces}");
             break;
-        } 
-        Console.WriteLine($"    Внутренняя итерация: {col}");
+
+        case "2":
+            Console.Write("Введите предложение: ");
+            string sentence1 = Console.ReadLine();
+            bool found = false;
+            string upper = "АЕЁИОУЫЭЮЯБВГДЖЗЙКЛМНПРСТФХЦЧШЩЬЪ";
+            for (int i = 0; i < sentence1.Length; i++){
+                char c = sentence1[i];
+                if (upper.Contains(c)){
+                    Console.WriteLine($"Первая заглавная буква '{c}' находится на позиции: {i}");
+                    found = true;
+                    break;
+                }
+            }
+            if (!found){
+                    Console.WriteLine("Заглавных букв нет");
+                }
+            break;
+        case "0":
+            Console.WriteLine("До свидания!");
+            break;
+        default:
+            Console.WriteLine("Такого пункта нет, попробуйте снова.");
+            break;
     }
-}
+}while (menuChoice != "0");
