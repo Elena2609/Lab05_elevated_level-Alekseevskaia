@@ -25,24 +25,52 @@
 // Console.WriteLine();
 // Console.WriteLine("Бесконечный цикл");
 
-int i = 1;
-while (i <= 5){
-    Console.WriteLine($"Значение i: {i}");
-    i++;
-} 
+// int i = 1;
+// while (i <= 5){
+//     Console.WriteLine($"Значение i: {i}");
+//     i++;
+// } 
 
-//Шаг 5. Валидация ввода через while
+// //Шаг 5. Валидация ввода через while
+// Console.WriteLine();
+// Console.WriteLine("Валидация ввода через while");
+// bool isValid = false;
+// int enteredAge = 0;
+// while (!isValid){
+//     Console.Write("Введите ваш возраст (целое число): ");
+//     string input = Console.ReadLine();
+//     isValid = int.TryParse(input, out enteredAge);
+
+//     if (!isValid){
+//         Console.WriteLine("Это не похоже на целое число. Попробуйте еще раз.");
+//     }
+// } 
+// Console.WriteLine($"Принято! Ваш возраст: {enteredAge}");
+
+//Шаг 7. Меню на do-while
 Console.WriteLine();
-Console.WriteLine("Валидация ввода через while");
-bool isValid = false;
-int enteredAge = 0;
-while (!isValid){
-    Console.Write("Введите ваш возраст (целое число): ");
-    string input = Console.ReadLine();
-    isValid = int.TryParse(input, out enteredAge);
+Console.WriteLine("Меню (без выхода, один проход)");
 
-    if (!isValid){
-        Console.WriteLine("Это не похоже на целое число. Попробуйте еще раз.");
+string menuChoice;
+do {
+    Console.WriteLine("1 - Показать дату");
+    Console.WriteLine("2 - Показать приветствие");
+    Console.WriteLine("0 - Выход");
+    Console.Write("Выберите пункт: ");
+    menuChoice = Console.ReadLine();
+
+    switch (menuChoice){
+        case "1":
+            Console.WriteLine($"Сегодня : {DateTime.Now:dd.MM.yyyy}");
+            break;
+        case "2":
+            Console.WriteLine("Здраствуйте! Рады видеть вас снова");
+            break;
+        case "0":
+            Console.WriteLine("До свидания!");
+            break;
+        default:
+            Console.WriteLine("Такого пункта нет, попробуйте снова.");
+            break;
     }
-} 
-Console.WriteLine($"Принято! Ваш возраст: {enteredAge}");
+}while (menuChoice != "0");
